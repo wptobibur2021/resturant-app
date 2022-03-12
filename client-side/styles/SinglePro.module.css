@@ -1,0 +1,21 @@
+.singleProduct {
+    display: flex;
+    width: 31%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border: 1px solid #ddd;
+    margin: 16px;
+    border-radius: 10px;
+}
+
+.itemTitle {
+    font-weight: 700;
+    color: rgb(238, 53, 53);
+}
+
+.itemPrice {
+    font-weight: 500;
+    color: rgb(4, 109, 4)
+}

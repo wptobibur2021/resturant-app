@@ -1,0 +1,35 @@
+.container {
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sectionHeader {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.sectionTitle {
+    font-weight: 700;
+    color: red;
+    font-size: 35px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.sectionHeader p {
+    text-align: center;
+    color: rgb(6 4 4);
+    line-height: 29px;
+}
+
+.productItem {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}

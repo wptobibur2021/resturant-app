@@ -1,0 +1,40 @@
+.container {
+    background-color: #222;
+    color: white;
+    padding: 30px;
+}
+
+.footerItem {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.item {
+    width: 32%;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: centerstart
+}
+
+.footerTitle {
+    margin: 0
+}
+
+.item p {
+    line-height: 25px
+}
+
+.footerMenu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footerMenuList {
+    border-bottom: 1px solid #b9b5b573;
+    margin: 20px 0px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}

@@ -1,0 +1,50 @@
+.container {
+    height: calc(100vh - 100px);
+    padding: 30px;
+}
+
+.productDetails {
+    width: 100%;
+    display: flex
+}
+
+.leftSide {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageContainer {
+    height: 80%;
+    width: 80%;
+    position: relative
+}
+
+.rightSide {
+    flex: 1;
+}
+
+
+.title,
+.price {
+    color: red;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.sizeItem {
+    display: flex;
+}
+
+.item {
+    display: flex;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+.ingredients {
+    display: flex;
+    flex-direction: column;
+}
