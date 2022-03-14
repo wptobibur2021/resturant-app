@@ -55,6 +55,10 @@ const Details = () => {
                                 <label htmlFor="spicy" className={style.label}>Spicy Sauce</label>
                             </div>
                         </div>
+                        <div className={style.cart}>
+                            <input type="number" className={style.cartQty} />
+                            <button type="submit" className={style.cartBtn} >Add to cart</button>
+                        </div>
                     </div>
                 </div>
             </div>

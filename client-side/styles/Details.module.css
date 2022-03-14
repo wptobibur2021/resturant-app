@@ -1,5 +1,4 @@
 .container {
-    height: calc(100vh - 100px);
     padding: 30px;
 }
 
@@ -10,14 +9,13 @@
 
 .leftSide {
     flex: 1;
-    height: 100%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .imageContainer {
-    height: 80%;
     width: 80%;
     position: relative
 }
@@ -47,4 +45,31 @@
 .ingredients {
     display: flex;
     flex-direction: column;
+}
+
+.cart {
+    margin-top: 20px
+}
+
+.cartQty {
+    width: 10%;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+.cartBtn {
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+    .productDetails {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }

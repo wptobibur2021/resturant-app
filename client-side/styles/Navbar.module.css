@@ -82,3 +82,47 @@
     color: #fc0101;
     font-size: 13px;
 }
+
+@media screen and (max-width: 480px) {
+    .item:nth-child(2) {
+        display: none !important;
+    }
+
+    .container {
+        min-height: 50px
+    }
+
+    .cartButton {
+        width: 35px;
+    }
+
+    .counter {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        top: -4px;
+        right: -10px;
+        font-size: 11px;
+    }
+
+    .callButton {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+    }
+
+    .texts {
+        margin-left: 10px;
+    }
+
+    .text:first-child {
+        font-size: 12px;
+        font-weight: 400
+    }
+
+    .text:last-child {
+        font-size: 13px;
+        font-weight: 400
+    }
+}
