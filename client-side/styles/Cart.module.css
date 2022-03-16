@@ -35,7 +35,6 @@
 
 .wrapper {
   width: 90%;
-  max-height: 300px;
   background-color: #333;
   padding: 50px;
   padding-top: 10px;
@@ -49,12 +48,35 @@
   margin-right: 10px;
 }
 
+.paypal-button.paypal-button-number-1.paypal-button-layout-vertical.paypal-button-shape-rect.paypal-button-number-multiple.paypal-button-env-sandbox.paypal-button-color-black.paypal-button-text-color-white.paypal-logo-color-white {
+  background-color: hsl(0deg 0% 100%) !important;
+  color: #000 !important;
+  font-weight: 600 !important;
+}
+
 .button {
-  height: 30px;
+  padding: 10px;
   color: #d1411e;
   font-weight: bold;
   cursor: pointer;
   margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.paymentBtn {
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+}
+
+.cashOnDelevary {
+  padding: 10px;
+  color: #111;
+  background-color: #fff;
+  border: none;
+  margin: 20px 0px;
+  width: 100%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {
@@ -70,11 +92,11 @@
     justify-content: center;
   }
 
-  .trTitle{
+  .trTitle {
     display: none;
   }
 
-  .tr{
+  .tr {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,33 +104,38 @@
     margin-bottom: 20px;
   }
 
-  .imgContainer{
+  .imgContainer {
     width: 35vw;
     height: 35vw;
   }
 
-  .name,.total{
+  .name,
+  .total {
     font-size: 24px;
   }
 
-  .extras,.price,.quantity{
+  .extras,
+  .price,
+  .quantity {
     font-size: 22px;
   }
 
-  .price::before{
+  .price::before {
     content: "Price: ";
     font-weight: 500;
   }
-  .quantity::before{
+
+  .quantity::before {
     content: "Quantity: ";
     font-weight: 500;
   }
-  .total::before{
+
+  .total::before {
     content: "Total: ";
     font-weight: 500;
   }
 
-  .wrapper{
+  .wrapper {
     width: 100%;
   }
 }
