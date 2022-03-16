@@ -1,62 +1,74 @@
 import React, { useState } from 'react'
 import style from '../../styles/Details.module.css'
 import Image from 'next/image'
-const Details = () => {
+import axios from 'axios'
+const Details = ({ product }) => {
+    const { images, name, prices, desc, extraOptions } = product
     const [size, setSize] = useState(0)
-    const product = {
-        name: 'Product Name',
-        id: '12345',
-        price: [13.2, 15, 18.5],
-        img: '/img/pizza.png',
-        desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.'
+    const [price, setPrice] = useState(prices[0])
+    const [extras, setExtras] = useState([]);
+    const [qty, setQty] = useState(1)
+    const changePrice = (number) => {
+        setPrice(price + number)
     }
+    const handleSize = (sizeIndex) => {
+        const diferentPrice = prices[sizeIndex] - prices[size]
+        setSize(sizeIndex)
+        changePrice(diferentPrice)
+    }
+    const handleChange = (e, option) => {
+        const checked = e.target.checked;
+        if (checked) {
+            changePrice(parseInt(option.price));
+            setExtras((prev) => [...prev, option]);
+        } else {
+            changePrice(parseInt(-option.price));
+            setExtras(extras.filter((extra) => extra._id !== option._id));
+        }
+    };
+
+
     return (
         <div className={style.container}>
             <div className={style.productDetails}>
                 <div className={style.leftSide}>
                     <div className={style.imageContainer}>
-                        <Image src={product.img} objectFit="contain" width="400px" height="400px" />
+                        <Image src={images} objectFit="contain" width="400px" height="400px" />
                     </div>
                 </div>
                 <div className={style.rightSide}>
                     <div className={style.textContainer}>
-                        <h3 className={style.title}>{product.name}</h3>
-                        <p className={style.price}>${product.price[size]}</p>
-                        <p className={style.desc}>{product.desc}</p>
+                        <h3 className={style.title}>{name}</h3>
+                        <p className={style.price}>${price}</p>
+                        <p className={style.desc}>{desc}</p>
                     </div>
                     <div className={style.aditional}>
                         <h3>Aditional Information</h3>
                         <div className={style.sizeItem}>
-                            <div className={style.item} onClick={() => setSize(0)}>
+                            <div className={style.item} onClick={() => handleSize(0)}>
                                 <Image objectFit="contain" src="/img/size.png" width="30px" height="30px" />
                                 <span>Small</span>
                             </div>
-                            <div className={style.item} onClick={() => setSize(1)}>
+                            <div className={style.item} onClick={() => handleSize(1)}>
                                 <Image objectFit="contain" src="/img/size.png" width="40px" height="40px" />
                                 <span>Medium</span>
                             </div>
-                            <div className={style.item} onClick={() => setSize(2)}>
+                            <div className={style.item} onClick={() => handleSize(2)}>
                                 <Image objectFit="contain" src="/img/size.png" width="50px" height="50px" />
                                 <span>Large</span>
                             </div>
                         </div>
                         <div className={style.ingredients}>
                             <h3>Choose aditional ingredients</h3>
-                            <div className={style.options}>
-                                <input type="checkbox" id="double" name="double" className={style.checkBox} />
-                                <label htmlFor="double" className={style.label}>Double Ingredient</label>
-                            </div>
-                            <div className={style.options}>
-                                <input type="checkbox" id="cheese" name="cheese" className={style.checkBox} />
-                                <label htmlFor="cheese" className={style.label}>Extra cheese</label>
-                            </div>
-                            <div className={style.options}>
-                                <input type="checkbox" id="spicy" name="spicy" className={style.checkBox} />
-                                <label htmlFor="spicy" className={style.label}>Spicy Sauce</label>
-                            </div>
+                            {extraOptions?.map((option) => (
+                                <div className={style.options} key={option._id}>
+                                    <input onChange={(e) => handleChange(e, option)} type="checkbox" id={option.text} name={option.text} className={style.checkBox} />
+                                    <label htmlFor={option.text} className={style.label}>{option.text}</label>
+                                </div>
+                            ))}
                         </div>
                         <div className={style.cart}>
-                            <input type="number" className={style.cartQty} />
+                            <input onChange={(e) => setQty(e.target.value)} defaultValue={1} type="number" className={style.cartQty} />
                             <button type="submit" className={style.cartBtn} >Add to cart</button>
                         </div>
                     </div>
@@ -66,4 +78,14 @@ const Details = () => {
     )
 }
 
+export async function getServerSideProps({ params }) {
+    const product = await axios.get(`http://localhost:3000/api/product/${params.id}`)
+    return {
+        props: {
+            product: product.data
+        },
+    }
+}
 export default Details
+
+

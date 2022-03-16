@@ -13,6 +13,7 @@
 .itemTitle {
     font-weight: 700;
     color: rgb(238, 53, 53);
+    cursor: pointer;
 }
 
 .itemPrice {

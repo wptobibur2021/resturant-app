@@ -4,8 +4,8 @@ import Products from '../components/Product/Products'
 import Slider from '../components/Slider/Slider'
 import styles from '../styles/Home.module.css'
 import Propular from '../components/Product/Propular'
-
-export default function Home() {
+import axios from 'axios'
+export default function Home({ products }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -14,8 +14,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Slider></Slider>
-      <Products></Products>
+      <Products products={products}></Products>
       <Propular></Propular>
     </div>
   )
+}
+
+/* Facthing Data from database */
+
+export async function getServerSideProps() {
+  const products = await axios.get('http://localhost:3000/api/product')
+  return {
+    props: {
+      products: products.data
+    },
+  }
 }

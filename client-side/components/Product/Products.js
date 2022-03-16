@@ -1,7 +1,8 @@
 import React from 'react'
 import Single from './Single'
 import style from '../../styles/Products.module.css'
-const Products = () => {
+
+const Products = ({ products }) => {
     return (
         <div className={style.container}>
             <div className={style.sectionHeader}>
@@ -10,18 +11,9 @@ const Products = () => {
             </div>
             <div className={style.wrapper}>
                 <div className={style.productItem}>
-                    <Single />
-                    <Single />
-                    <Single />
-                    <Single />
-                    <Single />
-                    <Single />
-                    <Single />
-                    <Single />
-                    <Single />
-                    <Single />
-                    <Single />
-                    <Single />
+                    {
+                        products?.map((product) => <Single key={product.id} product={product}></Single>)
+                    }
                 </div>
             </div>
         </div>
@@ -29,3 +21,5 @@ const Products = () => {
 }
 
 export default Products
+
+
